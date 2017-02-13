@@ -28,11 +28,10 @@
     
     _customView = [CustomView customView];
     _customView.center = self.view.center;
-    [self.view addSubview:_customView];
-    
     [_customView.testBtnActionSignal subscribeNext:^(UIButton *x) {
         NSLog(@"testBtnAction: %@", x.currentTitle);
     }];
+    [self.view addSubview:_customView];
 }
 
 - (void)RACSubject {

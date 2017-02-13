@@ -41,7 +41,9 @@
 
 - (void)testBtnAction:(UIButton *)sender {
     
-    [self.testBtnActionSignal sendNext:sender];
+    if (self.testBtnActionSignal) {
+        [self.testBtnActionSignal sendNext:sender];
+    }
 }
 
 @end

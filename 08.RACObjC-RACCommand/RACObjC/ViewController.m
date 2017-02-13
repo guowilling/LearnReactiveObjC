@@ -21,11 +21,11 @@
     
     //[self RACCommand];
     
-    //[self executionSignals];
+    [self executionSignals];
     
     //[self switchToLatest];
     
-    [self executing];
+    //[self executing];
 }
 
 - (void)executing {
@@ -82,7 +82,7 @@
         }];
     }];
     
-    // 订阅信号方式一: 注意, 此种方式必须要在执行命令前订阅信号.
+    // 注意: 必须先订阅信号再执行命令.
     //executionSignals: 信号源, 即发送数据是信号.
 //    [command.executionSignals subscribeNext:^(RACSignal *x) {
 //        [x subscribeNext:^(id x) {
@@ -90,7 +90,7 @@
 //        }];
 //    }];
     
-    // switchToLatest 得到最新发送的信号, 只能用于信号源.
+    // switchToLatest 得到信号源最新发送的信号.(注意: 必须先 switchToLatest 再 execute)
     [command.executionSignals.switchToLatest subscribeNext:^(id x) {
         NSLog(@"%@", x);
     }];

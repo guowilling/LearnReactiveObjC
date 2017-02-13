@@ -18,6 +18,48 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+
+    //[self basicUseSignal];
+
+    //[self timeout];
+    
+    //[self interval];
+    
+    //[self delay];
+}
+
+- (void)delay {
+    
+    [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [subscriber sendNext:@"hello, RAC."];
+        return nil;
+    }] delay:2.0] subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+}
+
+- (void)interval {
+    
+    [[RACSignal interval:2.0 onScheduler:[RACScheduler currentScheduler]] subscribeNext:^(id x) {
+        NSLog(@"%@", x);
+    }];
+}
+
+- (void)timeout {
+    
+    RACSignal *signal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [subscriber sendNext:@"hello, RAC."];
+        return nil;
+    }] timeout:2.0 onScheduler:[RACScheduler currentScheduler]];
+    
+    [signal subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    } error:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+- (void)basicUseSignal {
     
     // RACSignal 使用步骤: 1.创建信号; 2.订阅信号; 3.发送信号;
     
