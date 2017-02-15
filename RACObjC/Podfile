@@ -1,5 +1,0 @@
-platform :ios, '8.0'
-
-target ‘RACObjC’ do
-    pod 'ReactiveObjC'
-end
