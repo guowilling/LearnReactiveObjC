@@ -37,7 +37,7 @@
     RAC(self.loginVM, username) = self.textField1.rac_textSignal;
     RAC(self.loginVM, password) = self.textField2.rac_textSignal;
     
-    RAC(self.loginBtn, enabled) = self.loginVM.loginBtnEnableSiganl;
+    RAC(self.loginBtn, enabled) = self.loginVM.loginBtnEnableSignal;
     [[self.loginBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self myResignFirstResponder];
         [self.loginVM.loginCommand execute:@"发送登录请求"];

@@ -28,7 +28,7 @@
 
 - (void)setupLoginBtnEnableSiganl {
     
-    _loginBtnEnableSiganl = [RACSignal combineLatest:@[RACObserve(self, username), RACObserve(self, password)]
+    _loginBtnEnableSignal = [RACSignal combineLatest:@[RACObserve(self, username), RACObserve(self, password)]
                                               reduce:^id(NSString *username,NSString *password){
                                                   return @(username.length && password.length);
                                               }];

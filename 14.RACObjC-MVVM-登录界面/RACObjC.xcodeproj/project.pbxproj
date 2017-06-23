@@ -123,6 +123,7 @@
 				6883CAD11E4DB14C0047DF6C /* ViewController.m */,
 				6ECF7BB91E50C55A00DB951F /* LoginViewModel.h */,
 				6ECF7BBA1E50C55A00DB951F /* LoginViewModel.m */,
+				6883CAD31E4DB14C0047DF6C /* Main.storyboard */,
 				6883CACA1E4DB14C0047DF6C /* Supporting Files */,
 			);
 			path = RACObjC;
@@ -135,7 +136,6 @@
 				6883CACB1E4DB14C0047DF6C /* main.m */,
 				6883CACD1E4DB14C0047DF6C /* AppDelegate.h */,
 				6883CACE1E4DB14C0047DF6C /* AppDelegate.m */,
-				6883CAD31E4DB14C0047DF6C /* Main.storyboard */,
 				6883CAD61E4DB14C0047DF6C /* Assets.xcassets */,
 				6883CAD81E4DB14C0047DF6C /* LaunchScreen.storyboard */,
 				6883CADB1E4DB14C0047DF6C /* Info.plist */,

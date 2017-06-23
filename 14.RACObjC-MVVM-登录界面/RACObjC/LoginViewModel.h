@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
 
-@property (nonatomic, strong, readonly) RACSignal  *loginBtnEnableSiganl;
+@property (nonatomic, strong, readonly) RACSignal  *loginBtnEnableSignal;
 @property (nonatomic, strong, readonly) RACCommand *loginCommand;
 
 @end
