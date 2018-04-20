@@ -20,25 +20,23 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
-    //[self concat];
+//    [self concat];
     
-    //[self then];
-    
-    //[self merge];
-    
-    //[self zipWith];
+//    [self then];
+
+//    [self merge];
+
+//    [self zipWith];
 
     [self combineLatest];
 }
 
 - (void)combineLatest {
-    
     RACSignal *comineSiganl = [RACSignal combineLatest:@[self.textField1.rac_textSignal, self.textField2.rac_textSignal]
                                                 reduce:^id _Nullable(NSString *username, NSString *password){
-                                                    NSLog(@"username: %@  password: %@", username, password);
+                                                    NSLog(@"username: %@, password: %@", username, password);
                                                     return @(username.length && password.length);
                                                 }];
     // 订阅组合信号
@@ -49,7 +47,6 @@
 }
 
 - (void)zipWith {
-    
     // 需求: 一个界面有多个请求, 所有请求完成才更新 UI.
     RACSubject *signalA = [RACSubject subject];
     RACSubject *signalB = [RACSubject subject];
@@ -62,7 +59,6 @@
 }
 
 - (void)merge {
-    
     // 任意信号发送完成都会调用 nextBlock block.
     RACSubject *signalA = [RACSubject subject];
     RACSubject *signalB = [RACSubject subject];
@@ -75,7 +71,6 @@
 }
 
 - (void)then {
-    
     RACSignal *siganlA = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSLog(@"发送A请求");
         [subscriber sendNext:@"数据A"];
@@ -100,7 +95,6 @@
 }
 
 - (void)concat {
-    
     RACSignal *siganlA = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSLog(@"发送A请求");
         [subscriber sendNext:@"数据A"];

@@ -21,7 +21,6 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     [self loginBtnEnable];
@@ -30,16 +29,14 @@
 }
 
 - (void)loginBtnEnable {
-    
     RACSignal *loginBtnEnableSiganl = [RACSignal combineLatest:@[self.textField1.rac_textSignal, self.textField2.rac_textSignal]
-                                                        reduce:^id(NSString *account,NSString *pwd){
+                                                        reduce:^id(NSString *account, NSString *pwd){
                                                             return @(account.length && pwd.length);
                                                         }];
     RAC(self.loginBtn, enabled) = loginBtnEnableSiganl;
 }
 
 - (void)loginAction {
-    
     RACCommand *loginCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         NSLog(@"%@", input);
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -72,7 +69,6 @@
 }
 
 - (void)myResignFirstResponder {
-    
     [self.textField1 resignFirstResponder];
     [self.textField2 resignFirstResponder];
 }

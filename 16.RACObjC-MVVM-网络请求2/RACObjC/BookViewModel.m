@@ -13,7 +13,6 @@
 @implementation BookViewModel
 
 - (instancetype)init {
-    
     if (self = [super init]) {
         [self setup];
     }
@@ -21,7 +20,6 @@
 }
 
 - (void)setup {
-    
     _requestCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         NSLog(@"%@", input);
         RACSignal *requestSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -30,8 +28,7 @@
                                                  success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
                                                      [subscriber sendNext:responseObject];
                                                      [subscriber sendCompleted];
-                                                 } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-                                                 }];
+                                                 } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) { }];
             return nil;
         }];
         
@@ -41,8 +38,8 @@
                 return [Book bookWithDict:value];
             }].array;
             _books = modelArray;
-            //return modelArray;
             return nil;
+            //return modelArray;
         }];
     }];
 }

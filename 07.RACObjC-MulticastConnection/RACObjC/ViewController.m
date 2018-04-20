@@ -16,26 +16,23 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     // 需求: 每次订阅信号时不要都发送网络请求, 只发送一次网络请求, 但是每次订阅信号时都要能得到数据.
     
-    [self RACSignalRequestBUG];
+//    [self RACSignalRequestBUG];
     
-    //[self RACSubject];
+//    [self RACSubject];
     
     [self RACMulticastConnection];
 }
 
 - (void)RACMulticastConnection {
-    
-    NSLog(@"\n");
     NSLog(@"Fix BUG");
     
     // 1.创建信号
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        // connection connect 执行时执行此 block.
+        // connection connect 时执行此 block.
         NSLog(@"网络请求");
         [subscriber sendNext:@"JSON数据"];
         return nil;
@@ -47,20 +44,19 @@
     
     // 3.订阅连接类的信号
     [connection.signal subscribeNext:^(id x) {
-        // subscriber sendNext 执行时执行此 block.
+        // subscriber sendNext 时执行此 block.
         NSLog(@"订阅者一: %@",x);
     }];
     [connection.signal subscribeNext:^(id x) {
-        // subscriber sendNext 执行时执行此 block.
+        // subscriber sendNext 时执行此 block.
         NSLog(@"订阅者二: %@",x);
     }];
     
-    // 4.连接类连接
+    // 4.连接
     [connection connect];
 }
 
 - (void)RACSubject {
-    
     RACSubject *subject = [RACSubject subject];
     [subject subscribeNext:^(id x) {
         NSLog(@"订阅者一: %@", x);
@@ -72,7 +68,6 @@
 }
 
 - (void)RACSignalRequestBUG {
-    
     NSLog(@"BUG");
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSLog(@"网络请求");

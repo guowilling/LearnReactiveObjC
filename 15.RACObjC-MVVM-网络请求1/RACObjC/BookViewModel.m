@@ -13,7 +13,6 @@
 @implementation BookViewModel
 
 - (instancetype)init {
-    
     if (self = [super init]) {
         [self setup];
     }
@@ -21,7 +20,6 @@
 }
 
 - (void)setup {
-    
     _requestCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         RACSignal *requestSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -34,9 +32,7 @@
                      }].array;
                      [subscriber sendNext:modelArray];
                  }
-                 failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-                     
-                 }];
+                 failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) { }];
             return nil;
         }];
         return requestSignal;

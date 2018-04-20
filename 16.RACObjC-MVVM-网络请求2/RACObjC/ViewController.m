@@ -19,7 +19,6 @@
 @implementation ViewController
 
 - (BookViewModel *)bookVM {
-    
     if (!_bookVM) {
         _bookVM = [[BookViewModel alloc] init];
     }
@@ -27,14 +26,12 @@
 }
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     [self setupTableView];
 }
 
 - (void)setupTableView {
-    
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -55,15 +52,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return self.bookVM.books.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *identifier = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
+    if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     Book *book = self.bookVM.books[indexPath.row];

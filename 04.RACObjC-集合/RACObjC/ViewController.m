@@ -20,20 +20,20 @@
     
     [super viewDidLoad];
     
-    //[self RACTuple];
+//    [self RACTuple];
     
-    //[self NSArray];
+//    [self NSArray];
     
-    //[self NSDictionary];
+//    [self NSDictionary];
     
     [self Model];
 }
 
 - (void)Model {
-    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"flags.plist" ofType:nil];
     NSArray *dictArray = [NSArray arrayWithContentsOfFile:plistPath];
 
+    // 方式一:
 //    NSMutableArray *arrayM = [NSMutableArray array];
 //    [dictArray.rac_sequence.signal subscribeNext:^(NSDictionary *x) {
 //        Flag *flag = [Flag flagWithDict:x];
@@ -42,6 +42,7 @@
 //        NSLog(@"%@", arrayM);
 //    }];
     
+    // 方式二:
     NSArray *modelArray = [dictArray.rac_sequence map:^id(NSDictionary *value) {
         return [Flag flagWithDict:value];
     }].array;
@@ -49,7 +50,6 @@
 }
 
 - (void)NSDictionary {
-    
     NSDictionary *dictionary = @{@"name": @"willing", @"age": @"26"};
     [dictionary.rac_sequence.signal subscribeNext:^(RACTuple *x) {
         // 方式一:
@@ -65,7 +65,6 @@
 }
 
 - (void)NSArray {
-    
     NSArray *array = @[@"hello", @"R", @"A", @"C", @"."];
     [array.rac_sequence.signal subscribeNext:^(id x) {
         NSLog(@"%@", x);
@@ -73,7 +72,6 @@
 }
 
 - (void)RACTuple {
-    
     RACTuple *tuple = [RACTuple tupleWithObjectsFromArray:@[@"hello", @"R", @"A", @"C", @"."]];
     NSLog(@"%@", tuple[0]);
 }

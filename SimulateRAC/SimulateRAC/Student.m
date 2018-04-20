@@ -23,7 +23,6 @@
 @implementation Student
 
 - (CreditSubject *)creditSubject {
-    
     if (!_creditSubject) {
         _creditSubject = [CreditSubject create];
     }
@@ -31,31 +30,26 @@
 }
 
 + (Student *)create {
-    
     Student *student = [[self alloc] init];
     return student;
 }
 
 - (Student *)name:(NSString *)name {
-    
     _name = name;
     return self;
 }
 
 - (Student *)gender:(StudentGender)gender {
-    
     _gender = gender;
     return self;
 }
 
 - (Student *)studentNumber:(NSUInteger)number {
-    
     _studentNumber = number;
     return self;
 }
 
 - (Student *)sendCredit:(NSUInteger (^)(NSUInteger credit))updateCreditBlock {
-    
     if (updateCreditBlock) {
         self.credit = updateCreditBlock(self.credit);
         if (self.satisfyBlock) {
@@ -71,7 +65,6 @@
 }
 
 - (Student *)inspectIsASatisfyCredit:(SatisfyActionBlock)satisfyBlock {
-    
     if (satisfyBlock) {
         self.satisfyBlock = satisfyBlock;
         self.isSatisfyCredit = self.satisfyBlock(self.credit);

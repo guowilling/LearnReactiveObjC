@@ -17,18 +17,16 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
-    //[self flattenMap];
+//    [self flattenMap];
     
-    //[self map];
+//    [self map];
     
     [self flattenMapSignalOfSignals];
 }
 
 - (void)flattenMapSignalOfSignals {
-    
     // flattenMap 使用场景: 信号中的信号.
     
     RACSubject *signalOfsignals = [RACSubject subject];
@@ -61,12 +59,11 @@
 }
 
 - (void)map {
-    
     RACSubject *subject = [RACSubject subject];
     
     RACSignal *bindSignal = [subject map:^id _Nullable(id  _Nullable value) {
         NSLog(@"%@", value);
-        return [NSString stringWithFormat:@"New%@", value];
+        return [NSString stringWithFormat:@"解析后的%@", value];
     }];
     
     [bindSignal subscribeNext:^(id x) {
@@ -78,12 +75,11 @@
 }
 
 - (void)flattenMap {
-    
     RACSubject *subject = [RACSubject subject];
     
     RACSignal *bindSignal = [subject flattenMap:^__kindof RACSignal * _Nullable(id  _Nullable value) {
         NSLog(@"%@", value);
-        value = [NSString stringWithFormat:@"New%@", value];
+        value = [NSString stringWithFormat:@"解析后的%@", value];
         return [RACReturnSignal return:value];
     }];
     

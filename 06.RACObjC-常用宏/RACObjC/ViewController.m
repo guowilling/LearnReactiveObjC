@@ -19,7 +19,6 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     [RACObserve(self.view, frame) subscribeNext:^(id x) {
@@ -36,7 +35,6 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
     [self liftSelector];
 }
 
@@ -53,7 +51,7 @@
         return nil;
     }];
     // withSignalsFromArray 中的所有信号都发送信号后才会执行 selector, selector 的参数就是每个信号发送的数据.
-    [self rac_liftSelector:@selector(updateUIWithHotData:newData:) withSignalsFromArray:@[hotSignal,newSignal]];
+    [self rac_liftSelector:@selector(updateUIWithHotData:newData:) withSignalsFromArray:@[hotSignal, newSignal]];
 }
 
 - (void)updateUIWithHotData:(NSString *)hotData newData:(NSString *)newData {

@@ -12,7 +12,6 @@
 @implementation LoginViewModel
 
 - (instancetype)init {
-    
     if (self = [super init]) {
         [self setup];
     }
@@ -20,22 +19,19 @@
 }
 
 - (void)setup {
-    
     [self setupLoginBtnEnableSiganl];
     
     [self setupLoginCommand];
 }
 
 - (void)setupLoginBtnEnableSiganl {
-    
     _loginBtnEnableSignal = [RACSignal combineLatest:@[RACObserve(self, username), RACObserve(self, password)]
-                                              reduce:^id(NSString *username,NSString *password){
+                                              reduce:^id(NSString *username, NSString *password){
                                                   return @(username.length && password.length);
                                               }];
 }
 
 - (void)setupLoginCommand {
-    
     _loginCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         NSLog(@"%@", input);
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

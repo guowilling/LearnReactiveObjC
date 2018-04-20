@@ -11,7 +11,6 @@
 @implementation CustomView
 
 - (RACSubject *)testBtnActionSignal {
-    
     if (!_testBtnActionSignal) {
         _testBtnActionSignal = [RACSubject subject];
     }
@@ -19,12 +18,10 @@
 }
 
 + (instancetype)customView {
-    
     return [[self alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor orangeColor];
         
@@ -40,7 +37,6 @@
 }
 
 - (void)testBtnAction:(UIButton *)sender {
-    
     if (self.testBtnActionSignal) {
         [self.testBtnActionSignal sendNext:sender];
     }

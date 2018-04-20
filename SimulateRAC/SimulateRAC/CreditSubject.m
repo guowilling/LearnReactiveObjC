@@ -21,7 +21,6 @@
 @implementation CreditSubject
 
 - (NSMutableArray *)blockArray {
-    
     if (!_blockArray) {
         _blockArray = [NSMutableArray array];
     }
@@ -29,13 +28,11 @@
 }
 
 + (CreditSubject *)create {
-    
     CreditSubject *subject = [[self alloc] init];
     return subject;
 }
 
 - (CreditSubject *)sendNext:(NSUInteger)credit {
-    
     self.credit = credit;
     
     if (self.blockArray.count > 0) {
@@ -47,7 +44,6 @@
 }
 
 - (CreditSubject *)subscribeNext:(SubscribeNextActionBlock)block {
-    
     if (block) {
         block(self.credit);
     }

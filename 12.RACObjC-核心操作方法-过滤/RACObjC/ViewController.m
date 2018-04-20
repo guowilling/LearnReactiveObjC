@@ -18,22 +18,20 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
-    //[self filter];
+//    [self filter];
     
-    //[self ignore];
+//    [self ignore];
     
-    //[self take];
+//    [self take];
     
-    //[self distinctUntilChanged];
+//    [self distinctUntilChanged];
     
     [self skip];
 }
 
 - (void)skip {
-    
     // skip: 跳过 skipCount 次信号.
     RACSubject *subject = [RACSubject subject];
     [[subject skip:2] subscribeNext:^(id x) {
@@ -45,7 +43,6 @@
 }
 
 - (void)distinctUntilChanged {
-    
     // distinctUntilChanged: 如果信号发送的数据和上一次相同, 则忽略此次信号.
     
     RACSubject *subject = [RACSubject subject];
@@ -60,7 +57,6 @@
 }
 
 - (void)take {
-    
     RACSubject *subject = [RACSubject subject];
     
     // take: 只接收信号发送的前面 count 次数据.
@@ -90,7 +86,6 @@
 }
 
 - (void)ignore {
-    
     RACSubject *subject = [RACSubject subject];
     // ignore: 忽略指定内容.
     // ignoreValues: 忽略所有的内容.
@@ -105,9 +100,8 @@
 }
 
 - (void)filter {
-    
     [[self.textField.rac_textSignal filter:^BOOL(NSString * _Nullable value) {
-       return  [value length] > 5;
+       return [value length] > 5;
     }] subscribeNext:^(NSString * _Nullable x) {
         NSLog(@"%@", x);
     }];

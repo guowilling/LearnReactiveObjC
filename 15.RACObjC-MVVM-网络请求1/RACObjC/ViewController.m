@@ -19,7 +19,6 @@
 @implementation ViewController
 
 - (BookViewModel *)bookVM {
-    
     if (!_bookVM) {
         _bookVM = [[BookViewModel alloc] init];
     }
@@ -27,7 +26,6 @@
 }
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     RACSignal *signal = [self.bookVM.requestCommand execute:nil];

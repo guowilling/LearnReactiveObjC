@@ -19,12 +19,11 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
-    //[self RACSubject];
+//    [self RACSubject];
     
-    //[self RACReplaySubject];
+//    [self RACReplaySubject];
     
     _customView = [CustomView customView];
     _customView.center = self.view.center;
@@ -35,7 +34,6 @@
 }
 
 - (void)RACSubject {
-    
     // 创建信号
     RACSubject *subject = [RACSubject subject];
     
@@ -54,7 +52,6 @@
 }
 
 - (void)RACReplaySubject {
-    
     // 创建信号
     RACReplaySubject *replaySubject = [RACReplaySubject subject];
     

@@ -18,7 +18,6 @@
 @implementation ModalViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     @weakify(self);
@@ -31,12 +30,10 @@
 }
 
 - (IBAction)dimissAction:(id)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)dealloc {
-    
     NSLog(@"%s", __func__);
 }
 

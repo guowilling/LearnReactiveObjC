@@ -22,7 +22,6 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     [self RAC_delegate];
@@ -37,29 +36,24 @@
 }
 
 - (void)RAC_textFiled {
-    
     [self.textField.rac_textSignal subscribeNext:^(id x) {
-        
         NSLog(@"%@",x);
     }];
 }
 
 - (void)RAC_notification {
-    
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil] subscribeNext:^(NSNotification *x) {
         NSLog(@"UIKeyboardWillShowNotification: %@", x.userInfo);
     }];
 }
 
 - (void)RAC_events {
-    
     [[self.button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *x) {
         NSLog(@"Click button: %@", x.currentTitle);
     }];
 }
 
 - (void)RAC_KVO {
-    
     [self.redView rac_observeKeyPath:@"frame"
                              options:NSKeyValueObservingOptionNew
                             observer:nil
@@ -73,7 +67,6 @@
 }
 
 - (void)RAC_delegate {
-    
     // 方式一: RACSubject
     
     // 方式二: rac_signalForSelector
@@ -85,7 +78,6 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
     CGRect newFrame = self.redView.frame;
     newFrame.size.height += 50;
     self.redView.frame = newFrame;

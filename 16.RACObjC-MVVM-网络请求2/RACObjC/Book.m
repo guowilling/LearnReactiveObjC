@@ -11,7 +11,6 @@
 @implementation Book
 
 + (instancetype)bookWithDict:(NSDictionary *)dict {
-    
     Book *book = [[Book alloc] init];
     book.title = dict[@"title"];
     book.subtitle = dict[@"subtitle"];

@@ -23,7 +23,6 @@
 @implementation ViewController
 
 - (LoginViewModel *)loginVM {
-    
     if (!_loginVM) {
         _loginVM = [[LoginViewModel alloc] init];
     }
@@ -31,7 +30,6 @@
 }
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     RAC(self.loginVM, username) = self.textField1.rac_textSignal;
@@ -45,7 +43,6 @@
 }
 
 - (void)myResignFirstResponder {
-    
     [self.textField1 resignFirstResponder];
     [self.textField2 resignFirstResponder];
 }

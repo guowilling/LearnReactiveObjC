@@ -15,23 +15,21 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    
+- (void)viewDidLoad {    
     [super viewDidLoad];
     
-    //[self RACCommand];
+//    [self RACCommand];
     
-    [self executionSignals];
+//    [self executionSignals];
     
-    //[self switchToLatest];
-    
-    //[self executing];
+//    [self switchToLatest];
+
+    [self executing];
 }
 
 - (void)executing {
-    
     RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        NSLog(@"%@",input);
+        NSLog(@"%@", input);
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             [subscriber sendNext:@"执行命令产生的数据"];
             [subscriber sendCompleted];
@@ -51,17 +49,16 @@
 }
 
 - (void)switchToLatest {
-    
     RACSubject *signalOfSignals = [RACSubject subject];
     RACSubject *signalA = [RACSubject subject];
     RACSubject *signalB = [RACSubject subject];
     
     // 订阅信号
-//        [signalOfSignals subscribeNext:^(RACSignal *x) {
-//            [x subscribeNext:^(id x) {
-//                NSLog(@"%@",x);
-//            }];
+//    [signalOfSignals subscribeNext:^(RACSignal *x) {
+//        [x subscribeNext:^(id x) {
+//            NSLog(@"%@",x);
 //        }];
+//    }];
     [signalOfSignals.switchToLatest subscribeNext:^(id x) {
         NSLog(@"%@",x);
     }];
@@ -73,7 +70,6 @@
 }
 
 - (void)executionSignals {
-    
     RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         NSLog(@"%@", input);
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -99,7 +95,6 @@
 }
 
 - (void)RACCommand {
-    
     // RACCommand
     // 使用场景 1.监听按钮点击事件; 2.发送网络请求等;
     

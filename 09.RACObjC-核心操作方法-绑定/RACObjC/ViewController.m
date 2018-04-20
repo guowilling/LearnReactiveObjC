@@ -17,7 +17,6 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     // 1.原信号
@@ -27,7 +26,7 @@
     RACSignal *bindSignal = [subject bind:^RACSignalBindBlock _Nonnull{
         return ^RACSignal *(id value, BOOL *stop) {
             NSLog(@"原信号发送的内容: %@", value);
-            value = [NSString stringWithFormat:@"New%@",value];
+            value = [NSString stringWithFormat:@"解析后的%@",value];
             // 不能 return nil, 可以 return [RACSignal empty].
             return [RACReturnSignal return:value];
         };

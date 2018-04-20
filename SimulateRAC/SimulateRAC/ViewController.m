@@ -25,7 +25,6 @@
 @implementation ViewController
 
 - (UIButton *)testButton {
-    
     if (!_testButton) {
         _testButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_testButton setTitle:@"增加5个积分" forState:UIControlStateNormal];
@@ -39,7 +38,6 @@
 }
 
 - (UILabel *)currentCreditLabel {
-    
     if (!_currentCreditLabel) {
         _currentCreditLabel = [[UILabel alloc] init];
         _currentCreditLabel.textColor = [UIColor lightGrayColor];
@@ -48,7 +46,6 @@
 }
 
 - (UILabel *)isSatisfyLabel {
-    
     if (!_isSatisfyLabel) {
         _isSatisfyLabel = [[UILabel alloc] init];
         _isSatisfyLabel.textAlignment = NSTextAlignmentRight;
@@ -58,7 +55,6 @@
 }
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
     self.student = [[[[[Student create] name:@"willing"] gender:StudentGenderMale] studentNumber:123] inspectIsASatisfyCredit:^BOOL(NSUInteger credit) {
@@ -78,7 +74,6 @@
 }
 
 - (void)setupUI {
-    
     [self.view addSubview:self.currentCreditLabel];
     [self.currentCreditLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(50);
@@ -103,7 +98,6 @@
 }
 
 - (void)subscribeStudent {
-    
     [self.student.creditSubject subscribeNext:^(NSUInteger credit) {
         NSLog(@"第一个订阅者处理积分: %lu", credit);
         self.currentCreditLabel.text = [NSString stringWithFormat:@"%lu",credit];

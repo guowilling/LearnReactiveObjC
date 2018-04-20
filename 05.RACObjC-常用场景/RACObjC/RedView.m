@@ -12,7 +12,6 @@
 
 - (IBAction)didClickRedViewButton:(UIButton *)sender {
     
-    
 }
 
 @end
