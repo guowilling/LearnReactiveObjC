@@ -24,7 +24,7 @@
         RACSignal *requestSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
             [manager GET:@"https://api.douban.com/v2/book/search"
-              parameters:@{@"q":@"美女"}
+              parameters:@{@"q": @"动物"}
                  success:^(AFHTTPRequestOperation * _Nonnull operation, NSDictionary * _Nonnull responseObject) {
                      NSArray *dictArray = responseObject[@"books"];
                      NSArray *modelArray = [dictArray.rac_sequence map:^id(id value) {
