@@ -37,7 +37,7 @@
 
 - (void)RAC_textFiled {
     [self.textField.rac_textSignal subscribeNext:^(id x) {
-        NSLog(@"%@",x);
+        NSLog(@"%@", x);
     }];
 }
 

@@ -24,7 +24,7 @@
     
 //    [self switchToLatest];
 
-    [self executing];
+//    [self executing];
 }
 
 - (void)executing {
@@ -78,8 +78,8 @@
         }];
     }];
     
-    // 注意: 必须先订阅信号再执行命令.
-    //executionSignals: 信号源, 即发送数据是信号.
+    // 注意: 必须先订阅信号再执行命令
+    //executionSignals: 信号源, 即发送数据是信号
 //    [command.executionSignals subscribeNext:^(RACSignal *x) {
 //        [x subscribeNext:^(id x) {
 //            NSLog(@"%@", x);
@@ -96,7 +96,7 @@
 
 - (void)RACCommand {
     // RACCommand
-    // 使用场景 1.监听按钮点击事件; 2.发送网络请求等;
+    // 使用场景: 1.监听按钮点击事件; 2.发送网络请求等;
     
     RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         NSLog(@"%@", input);
@@ -108,7 +108,7 @@
     
     RACSignal *signal = [command execute:@"执行命令"];
     
-    // execute 使用的是 RACReplaySubject, 所以可以先执行命令, 再订阅信号.
+    // execute 使用的是 RACReplaySubject, 所以可以先执行命令, 再订阅信号
     [signal subscribeNext:^(id x) {
         NSLog(@"%@",x);
     }];

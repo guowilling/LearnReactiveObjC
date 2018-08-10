@@ -18,13 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 需求: 每次订阅信号时不要都发送网络请求, 只发送一次网络请求, 但是每次订阅信号时都要能得到数据.
+    // 需求: 每次订阅信号时不要都发送网络请求, 只发送一次网络请求, 但是每次订阅信号时都要能得到数据
     
 //    [self RACSignalRequestBUG];
     
 //    [self RACSubject];
     
-    [self RACMulticastConnection];
+//    [self RACMulticastConnection];
 }
 
 - (void)RACMulticastConnection {
@@ -44,11 +44,11 @@
     
     // 3.订阅连接类的信号
     [connection.signal subscribeNext:^(id x) {
-        // subscriber sendNext 时执行此 block.
+        // subscriber sendNext 时执行此 block
         NSLog(@"订阅者一: %@",x);
     }];
     [connection.signal subscribeNext:^(id x) {
-        // subscriber sendNext 时执行此 block.
+        // subscriber sendNext 时执行此 block
         NSLog(@"订阅者二: %@",x);
     }];
     

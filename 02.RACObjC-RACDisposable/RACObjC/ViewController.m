@@ -27,11 +27,11 @@
         
         [subscriber sendNext:@"hello, RAC."];
         
-        // 如果信号不再发送数据, 最好调用信号的发送完成方法, 该方法会调用 [RACDisposable disposable] 取消订阅信号.
+        // 如果信号不再发送数据, 最好调用信号的发送完成方法, 该方法会调用 [RACDisposable disposable] 取消订阅信号
         //[subscriber sendCompleted];
         
         return [RACDisposable disposableWithBlock:^{
-            // 订阅者释放时会自动取消订阅信号, 但是只要订阅者没有释放, 就不会取消订阅信号.
+            // 订阅者释放时会自动取消订阅信号, 但是只要订阅者没有释放, 就不会取消订阅信号
             NSLog(@"信号被取消订阅了!");
         }];
     }];

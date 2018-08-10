@@ -39,7 +39,7 @@
 }
 
 - (void)liftSelector {
-    // 需求: 多个请求全部完成后再刷新 UI.
+    // 需求: 多个请求全部完成后再刷新 UI
     RACSignal *hotSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSLog(@"请求热销模块数据");
         [subscriber sendNext:@"热销模块数据"];
@@ -50,7 +50,7 @@
         [subscriber sendNext:@"最新模块数据"];
         return nil;
     }];
-    // withSignalsFromArray 中的所有信号都发送信号后才会执行 selector, selector 的参数就是每个信号发送的数据.
+    // withSignalsFromArray 中的所有信号都发送数据后才会执行 selector, selector 的参数就是每个信号发送的数据
     [self rac_liftSelector:@selector(updateUIWithHotData:newData:) withSignalsFromArray:@[hotSignal, newSignal]];
 }
 

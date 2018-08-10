@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import <ReactiveObjC.h>
 #import "CustomView.h"
+#import <ReactiveObjC.h>
 
 @interface ViewController ()
 

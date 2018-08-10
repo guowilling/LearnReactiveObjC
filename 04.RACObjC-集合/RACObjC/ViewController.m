@@ -17,7 +17,6 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     
 //    [self RACTuple];
@@ -26,7 +25,7 @@
     
 //    [self NSDictionary];
     
-    [self Model];
+//    [self Model];
 }
 
 - (void)Model {
@@ -58,7 +57,7 @@
 //        NSLog(@"%@: %@", key, value);
         
         // 方式二:
-        // RACTupleUnpack: 解析元组, 参数是解析出来的变量名, '=' 右边是被解析的元组.
+        // RACTupleUnpack: 解析元组, 参数是解析出来的变量名, '=' 右边是被解析的元组
         RACTupleUnpack(NSString *key, NSString *value) = x;
         NSLog(@"%@: %@", key, value);
     }];
