@@ -10,11 +10,11 @@
 
 @implementation CustomView
 
-- (RACSubject *)testBtnActionSignal {
-    if (!_testBtnActionSignal) {
-        _testBtnActionSignal = [RACSubject subject];
+- (RACSubject *)btnActionSignal {
+    if (!_btnActionSignal) {
+        _btnActionSignal = [RACSubject subject];
     }
-    return _testBtnActionSignal;
+    return _btnActionSignal;
 }
 
 + (instancetype)customView {
@@ -30,15 +30,15 @@
         testBtn.frame = CGRectMake(0, 0, 100, 50);
         testBtn.center = self.center;
         [testBtn setTitle:@"Click Me!" forState:UIControlStateNormal];
-        [testBtn addTarget:self action:@selector(testBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [testBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:testBtn];
     }
     return self;
 }
 
-- (void)testBtnAction:(UIButton *)sender {
-    if (self.testBtnActionSignal) {
-        [self.testBtnActionSignal sendNext:sender];
+- (void)btnAction:(UIButton *)sender {
+    if (self.btnActionSignal) {
+        [self.btnActionSignal sendNext:sender];
     }
 }
 

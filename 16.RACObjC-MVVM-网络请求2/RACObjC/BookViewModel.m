@@ -28,7 +28,9 @@
                                                  success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
                                                      [subscriber sendNext:responseObject];
                                                      [subscriber sendCompleted];
-                                                 } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) { }];
+                                                 } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+                                                     [subscriber sendError:error];
+                                                 }];
             return nil;
         }];
         

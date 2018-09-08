@@ -13,6 +13,6 @@
 
 + (instancetype)customView;
 
-@property (nonatomic, strong) RACSubject *testBtnActionSignal;
+@property (nonatomic, strong) RACSubject *btnActionSignal;
 
 @end

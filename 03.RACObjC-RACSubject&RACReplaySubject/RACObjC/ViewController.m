@@ -27,7 +27,7 @@
     
     _customView = [CustomView customView];
     _customView.center = self.view.center;
-    [_customView.testBtnActionSignal subscribeNext:^(UIButton *x) {
+    [_customView.btnActionSignal subscribeNext:^(UIButton *x) {
         NSLog(@"testBtnAction: %@", x.currentTitle);
     }];
     [self.view addSubview:_customView];

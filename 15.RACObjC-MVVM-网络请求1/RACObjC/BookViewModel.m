@@ -32,7 +32,9 @@
                      }].array;
                      [subscriber sendNext:modelArray];
                  }
-                 failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) { }];
+                 failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+                     [subscriber sendError:error];
+                 }];
             return nil;
         }];
         return requestSignal;
